@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="Wang XF">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="我才睡醒的后院">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="我才睡醒的后院">
+  <!--Type page-->
+  
+      <meta property="og:type" content="website">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>我才睡醒的后院</title>
+
+
+  <link rel="shortcut icon" href="https://wxflamy.github.io/images/avatar.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://wxflamy.github.io/images/avatar.svg" alt="我才睡醒的后院" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  首页
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  归档
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  保留页面
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Untitled
+            
+          </h1>
+          <p class="posted-on">
+          2019-12-27
+          </p>
+          <div class="tags-links">
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <html>
+	<head><meta name="generator" content="Hexo 3.9.0">
+		<title>Hello VTK</title>
+		<style>
+			body {
+				background-image: linear-gradient(45deg, #EAD790 0%, #EF8C53 100%) ;
+				text-align: center;
+			}
+			
+			button {
+				background: rgba(0, 0, 0, 0.40);
+				box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+				border-radius: 8px;
+				color: white;
+				padding: 1em 2em;
+				border: none;
+				font-family: 'Roboto' , sans-serif;
+				font-weight: 100;
+				font-size: 14pt;
+				position: relative;
+				top: 40%;
+				cursor: pointer;
+				outline: none;
+			}
+			button:hover {
+				background: rgba(0 , 0 , 0 , 0.30);
+			}
+			textarea {
+				background: rgba(0, 0, 0, 0.40);
+				box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+				border-radius: 8px;
+				color: white;
+				padding: 1em 2em;
+				border: none;
+				font-family: 'Roboto' , sans-serif;
+				font-weight: 100;
+				font-size: 14pt;
+				position: relative;
+				top: 40%;
+				cursor: pointer;
+				outline: none;
+			}
+			}
+		</style>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css"><!--设置文字字体-->
+		<script>
+			function sayHello(){
+				alert('Hello World\n你好！');<!--弹出警告信息-->
+			}
+		</script>
+		<link rel="stylesheet" href="app.css">
+		<script type="text/javascript" src="https://unpkg.com/vtk.js"></script>
+		<style type="text/css">
+			#container {
+			width: 30%;
+			height: 20%;
+			margin: 0;
+			padding: 0;
+			}
+			#container2 {
+			width: 50%;
+			height: 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<hl>Welcome to JavaScript world</hl>
+		<br>
+		<button onclick="sayHello()"> 跟这个世界说你好</button><!--按钮元素，单击时调用sayHello-->
+		<br>
+		<textarea id="txtEditor"></textarea>
+		<br>
+		<div id="container"></div>
+		<div id="container2"></div>
+		<script type="text/javascript">
+			const container = document.querySelector('#container');
+			const container2 = document.querySelector('#container2');
+			
+			// VTK renderWindow/renderer
+			const renderWindow = vtk.Rendering.Core.vtkRenderWindow.newInstance();
+			const renderer = vtk.Rendering.Core.vtkRenderer.newInstance();
+			renderWindow.addRenderer(renderer);
+			const renderWindow2 = vtk.Rendering.Core.vtkRenderWindow.newInstance();
+			const renderer2 = vtk.Rendering.Core.vtkRenderer.newInstance();
+			renderWindow2.addRenderer(renderer2);
+			
+			//WebGL/OpenGL impl
+			const openGLRenderWindow = vtk.Rendering.OpenGL.vtkRenderWindow.newInstance();
+			openGLRenderWindow.setContainer(container);
+			openGLRenderWindow.setSize(1000,1000);
+			renderWindow.addView(openGLRenderWindow);
+			
+			const openGLRenderWindow2 = vtk.Rendering.OpenGL.vtkRenderWindow.newInstance();
+			openGLRenderWindow2.setContainer(container2);
+			openGLRenderWindow2.setSize(1000,1000);
+			renderWindow2.addView(openGLRenderWindow2);
+			
+			// Interactor
+			const interactor = vtk.Rendering.Core.vtkRenderWindowInteractor.newInstance();
+			interactor.setView(openGLRenderWindow);
+			interactor.initialize();
+			interactor.bindEvents(container);
+			
+			// Interactor style
+			const trackball = vtk.Interaction.Style.vtkInteractorStyleTrackballCamera.newInstance();
+			interactor.setInteractorStyle(trackball);
+			
+			// Pipeline
+			const cone = vtk.Filters.Sources.vtkConeSource.newInstance();
+			const mapper = vtk.Rendering.Core.vtkMapper.newInstance();
+			const actor = vtk.Rendering.Core.vtkActor.newInstance();
+			
+			mapper.setInputConnection(cone.getOutputPort());
+			actor.setMapper(mapper);
+			renderer.addActor(actor);
+			renderer2.addActor(actor);
+			
+			// Render
+			renderer.resetCamera();
+			renderWindow.render();
+			renderer2.resetCamera();
+			renderWindow2.render();
+		</script>
+	</body>
+</html>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://me.csdn.net/wxflamy"><img src="https://wxflamy.github.io/images/20180117213756040.jpg"/></a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/wxflamy" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:wxflamy@outlook.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/wangxiaofeng971" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('baidu')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>我才睡醒的后院 &copy; 2020</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+<!-- baidu_analytics start -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3c00e1b687fa7a576aa35b5ec88d2c27";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- baidu_analytics end -->
+
+
+
+
+</body>
+
+</html>
