@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="什么是动态规划（Dynamic Programming）？动态规划的意义是什么？">
+      <meta property="og:title" content="我才睡醒的后院">
   
   <!--Open Graph Description-->
   
@@ -24,7 +24,7 @@
   <meta property="og:site_name" content="我才睡醒的后院">
   <!--Type page-->
   
-      <meta property="og:type" content="article">
+      <meta property="og:type" content="website">
   
   <!--Page Cover-->
   
@@ -33,7 +33,7 @@
 
   <!-- Title -->
   
-  <title>什么是动态规划（Dynamic Programming）？动态规划的意义是什么？ - 我才睡醒的后院</title>
+  <title>AI - 我才睡醒的后院</title>
 
 
   <link rel="shortcut icon" href="https://wxflamy.github.io/images/avatar.png">
@@ -113,74 +113,37 @@
 
 
   <!-- Main Content -->
-  <div class="content-area">
-  <div class="post">
-    <!-- Post Content -->
-    <div class="container">
-      <article>
-        <!-- Title date & tags -->
-        <div class="post-header">
-          <h1 class="entry-title">
-            什么是动态规划（Dynamic Programming）？动态规划的意义是什么？
-            
-          </h1>
-          <p class="posted-on">
-          2019-11-14
-          </p>
-          <div class="tags-links">
-            
-              
-                <a href="/tags/动态规划/" rel="tag">
-                  动态规划
-                </a>
-              
-                <a href="/tags/转载知识文章/" rel="tag">
-                  转载知识文章
-                </a>
-              
-            
-          </div>
-        </div>
-        <!-- Post Main Content -->
-        <div class="entry-content has_line_number">
-          <h1 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h1><p>很有意思的问题。以往见过许多教材，对动态规划（DP）的引入属于“奉天承运，皇帝诏曰”式：不给出一点引入，见面即拿出一大堆公式吓人；学生则死啃书本，然后突然顿悟。针对入门者的教材不应该是这样的。恰好我给入门者讲过四次DP入门，迭代出了一套比较靠谱的教学方法，所以今天跑过来献丑。</p>
-<p>现在，我们试着自己来一步步“重新发明”DP。</p>
-<h1 id="从一个生活问题谈起"><a href="#从一个生活问题谈起" class="headerlink" title="从一个生活问题谈起"></a>从一个生活问题谈起</h1><p>先来看看生活中经常遇到的事吧——假设您是个土豪，身上带了足够的1、5、10、20、50、100元面值的钞票。现在您的目标是凑出某个金额w，<strong>需要用到尽量少的钞票。</strong></p>
-<p>依据生活经验，我们显然可以采取这样的策略：能用100的就尽量用100的，否则尽量用50的……依次类推。在这种策略下，666=6×100+1×50+1×10+1×5+1×1，共使用了10张钞票。</p>
-<p>这种策略称为“<strong>贪心</strong>”：假设我们面对的局面是“需要凑出w”，贪心策略会尽快让w变得更小。能让w少100就尽量让它少100，这样我们接下来面对的局面就是凑出w-100。长期的生活经验表明，贪心策略是正确的。</p>
-<p>但是，如果我们换一组钞票的面值，贪心策略就也许不成立了。如果一个奇葩国家的钞票面额分别是1、5、11，那么我们在凑出15的时候，贪心策略会出错：<br>      15=1×11+4×1    （贪心策略使用了5张钞票）<br>      15=3×5    （正确的策略，只用3张钞票）<br>为什么会这样呢？贪心策略错在了哪里？</p>
-<p>$f(4)$</p>
-<script type="math/tex; mode=display">x_i</script><p>test in 2020 01 13</p>
-
-        </div>
-      </article>
-    </div>
-    <!-- Comments -->
-    <div class="container">
-      
-<section id="comment">
-  <!-- <h1 class="title">留言</h1> -->
-
   
-</section>
+
+<!-- Main Content -->
+<div class="archive content-area">
+  <div class="container">
+    <h1 class="entry-title">#AI</h1>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+        
+        
+          <h2 class="year">2020</h2>
+          <ul class="list">
+            
+  <li>
+    <span class="date">
+      2020-02-24
+    </span>
+    <a href="/2020/02/24/Install-TensorFlow-2-0-in-Colab/" class="title">
+      Install TensorFlow 2.0 in Colab
+    </a>
+  </li>
 
 
+          </ul>
+        
+      </div>
     </div>
-    <!-- Pre or Next -->
-    <div class="nav-links">
-      
-        <div class="nav-previous">
-          <a href="/2020/01/15/ubuntu18systemback/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
-        </div>
-      
-      
-        <div class="nav-next">
-          <a href="/2019/10/31/linux-dd-copy-system/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
-        </div>
-      
-    </div>
-
   </div>
+  
+
 </div>
 
 
