@@ -167,6 +167,10 @@
 <p><img src="//wxflamy.github.io/2020/02/24/Install-TensorFlow-2-0-in-Colab/connect-to-google-colab-hosted-runtime.jpg" alt="连接到CPU/GPU"></p>
 <p>成功连接到托管服务后，它将在基于谷歌Colab浏览器的开发环境中显示以下图标:</p>
 <p><img src="//wxflamy.github.io/2020/02/24/Install-TensorFlow-2-0-in-Colab/connected-to-google-colab-hosted-runtime.jpg" alt="成功连接到托管服务"></p>
+<p><strong>点击“编辑-&gt;notebook setting”可以为Colab装一个免费的GPU</strong>
+<img src="//wxflamy.github.io/2020/02/24/Install-TensorFlow-2-0-in-Colab/notebook_setting.png" alt="配置GPU">
+<strong>目前GPU是Tesla T4，应该挺贵吧，据说一次可以免费用4小时</strong>
+<img src="//wxflamy.github.io/2020/02/24/Install-TensorFlow-2-0-in-Colab/GPUInfo.png" alt="GPU信息"></p>
 <h1>步骤4:检查默认安装的TensorFlow版本</h1>
 <p>现在在工具中运行以下Python命令来检查环境中安装的TensorFlow的版本:
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">print(tf.__version__)</span><br></pre></td></tr></table></figure></p>
