@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="Wang XF">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="collision_detection_using_VTK">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="我才睡醒的后院">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>collision_detection_using_VTK - 我才睡醒的后院</title>
+
+
+  <link rel="shortcut icon" href="https://wxflamy.github.io/images/avatar.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://wxflamy.github.io/images/avatar.svg" alt="我才睡醒的后院" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  首页
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  归档
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  保留页面
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            collision_detection_using_VTK
+            
+          </h1>
+          <p class="posted-on">
+          2020-02-27
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/VTK/" rel="tag">
+                  VTK
+                </a>
+              
+                <a href="/tags/collision detection/" rel="tag">
+                  collision detection
+                </a>
+              
+                <a href="/tags/OBB/" rel="tag">
+                  OBB
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p><a href="https://lorensen.github.io/VTKExamples/site/Cxx/DataStructures/OBBTreeIntersectWithLine/" target="_blank" rel="noopener">参考链接</a></p>
+<h1>Description</h1>
+<p>这个示例使用vtkOBBTree返回一条线和数据集的所有交叉点。如果你想要最近的交点，需要手动找到它。在本例中，我们创建了一个球体，并与之相交一条直线。</p>
+<h1>代码</h1>
+<p>OBBTreeIntersectWithLine.cxx</p>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkSmartPointer.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkSphereSource.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkPoints.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkPolyData.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkPointData.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkLine.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkOBBTree.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">char</span> *[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  vtkSmartPointer&lt;vtkSphereSource&gt; sphereSource = </span><br><span class="line">    vtkSmartPointer&lt;vtkSphereSource&gt;::New();</span><br><span class="line">  sphereSource-&gt;Update();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Create the locator</span></span><br><span class="line">  vtkSmartPointer&lt;vtkOBBTree&gt; tree = </span><br><span class="line">    vtkSmartPointer&lt;vtkOBBTree&gt;::New();</span><br><span class="line">  tree-&gt;SetDataSet(sphereSource-&gt;GetOutput());</span><br><span class="line">  tree-&gt;BuildLocator();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Intersect the locator with the line</span></span><br><span class="line">  <span class="keyword">double</span> lineP0[<span class="number">3</span>] = &#123;<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>&#125;;</span><br><span class="line">  <span class="keyword">double</span> lineP1[<span class="number">3</span>] = &#123;<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">2.0</span>&#125;;</span><br><span class="line">  vtkSmartPointer&lt;vtkPoints&gt; intersectPoints = </span><br><span class="line">    vtkSmartPointer&lt;vtkPoints&gt;::New();</span><br><span class="line"></span><br><span class="line">  tree-&gt;IntersectWithLine(lineP0, lineP1, intersectPoints, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"NumPoints: "</span> &lt;&lt; intersectPoints-&gt;GetNumberOfPoints()</span><br><span class="line">            &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Display list of intersections</span></span><br><span class="line">  <span class="keyword">double</span> intersection[<span class="number">3</span>];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intersectPoints-&gt;GetNumberOfPoints(); i++ )</span><br><span class="line">  &#123;</span><br><span class="line">    intersectPoints-&gt;GetPoint(i, intersection);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Intersection "</span> &lt;&lt; i &lt;&lt; <span class="string">": "</span></span><br><span class="line">              &lt;&lt; intersection[<span class="number">0</span>] &lt;&lt; <span class="string">", "</span></span><br><span class="line">              &lt;&lt; intersection[<span class="number">1</span>] &lt;&lt; <span class="string">", "</span></span><br><span class="line">              &lt;&lt; intersection[<span class="number">2</span>] &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1>CMakeLists.txt</h1>
+<p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.3</span> FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(OBBTreeIntersectWithLine)</span><br><span class="line"></span><br><span class="line"><span class="keyword">find_package</span>(VTK COMPONENTS </span><br><span class="line">  vtkCommonCore</span><br><span class="line">  vtkCommonDataModel</span><br><span class="line">  vtkFiltersGeneral</span><br><span class="line">  vtkFiltersSources QUIET)</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">NOT</span> VTK_FOUND)</span><br><span class="line">  <span class="keyword">message</span>(<span class="string">"Skipping OBBTreeIntersectWithLine: $&#123;VTK_NOT_FOUND_MESSAGE&#125;"</span>)</span><br><span class="line">  <span class="keyword">return</span> ()</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"><span class="keyword">message</span> (STATUS <span class="string">"VTK_VERSION: $&#123;VTK_VERSION&#125;"</span>)</span><br><span class="line"><span class="keyword">if</span> (VTK_VERSION <span class="keyword">VERSION_LESS</span> <span class="string">"8.90.0"</span>)</span><br><span class="line">  <span class="comment"># old system</span></span><br><span class="line">  <span class="keyword">include</span>(<span class="variable">$&#123;VTK_USE_FILE&#125;</span>)</span><br><span class="line">  <span class="keyword">add_executable</span>(OBBTreeIntersectWithLine MACOSX_BUNDLE OBBTreeIntersectWithLine.cxx )</span><br><span class="line">  <span class="keyword">target_link_libraries</span>(OBBTreeIntersectWithLine PRIVATE <span class="variable">$&#123;VTK_LIBRARIES&#125;</span>)</span><br><span class="line"><span class="keyword">else</span> ()</span><br><span class="line">  <span class="comment"># include all components</span></span><br><span class="line">  <span class="keyword">add_executable</span>(OBBTreeIntersectWithLine MACOSX_BUNDLE OBBTreeIntersectWithLine.cxx )</span><br><span class="line">  <span class="keyword">target_link_libraries</span>(OBBTreeIntersectWithLine PRIVATE <span class="variable">$&#123;VTK_LIBRARIES&#125;</span>)</span><br><span class="line">  <span class="comment"># vtk_module_autoinit is needed</span></span><br><span class="line">  vtk_module_autoinit(</span><br><span class="line">    TARGETS OBBTreeIntersectWithLine</span><br><span class="line">    MODULES <span class="variable">$&#123;VTK_LIBRARIES&#125;</span></span><br><span class="line">    )</span><br><span class="line"><span class="keyword">endif</span> ()</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2020/02/26/Method-for-importing-matlab-graphics-to-latex/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://me.csdn.net/wxflamy"><img src="https://wxflamy.github.io/images/20180117213756040.jpg"/></a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/wxflamy" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:wxflamy@outlook.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/wangxiaofeng971" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('baidu')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>我才睡醒的后院 &copy; 2020</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+<!-- baidu_analytics start -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3c00e1b687fa7a576aa35b5ec88d2c27";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- baidu_analytics end -->
+
+
+
+
+</body>
+
+</html>
