@@ -149,36 +149,27 @@
         <div class="entry-content has_line_number">
           <p>最近因缘际会地需要给五台台式机配置ROS环境，包括安装Ubuntu系统，联网安装ROS，配置MoveIt!之类的。嫌麻烦、费流量，所以搜了一大堆资料，反正不是自己电脑，所以就大胆的试了，虽然有些小干扰，还是一遍就成功了，所以记录一下。</p>
 <p>当我接触第一台计算机的时候，发现配置真好，硬盘有<strong>1TB</strong>，还预装了正版的Windows系统，这要是全给格了，得多可惜，于是我就给装了双系统，一半硬盘用Windows，一半用Ubuntu，里面保留的东西都没给动。装好了之后开始着手备份。</p>
-<h1>磁盘备份</h1>
-<h2>准备工具</h2>
-<p>一个预装了Ubuntu live CD的优盘，虽然有8GB，但是要备份1TB的硬盘，显得不太够。光Windows10系统就用了30多G，Ubuntu系统怎么也得6个多G，所以还得一块大点的硬盘也好优盘也好。</p>
-<h2>开始备份</h2>
-<p>想尽各种办法，让电脑从优盘启动，进入try Ubuntu without install</p>
+<h1 id="磁盘备份"><a href="#磁盘备份" class="headerlink" title="磁盘备份"></a>磁盘备份</h1><h2 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h2><p>一个预装了Ubuntu live CD的优盘，虽然有8GB，但是要备份1TB的硬盘，显得不太够。光Windows10系统就用了30多G，Ubuntu系统怎么也得6个多G，所以还得一块大点的硬盘也好优盘也好。</p>
+<h2 id="开始备份"><a href="#开始备份" class="headerlink" title="开始备份"></a>开始备份</h2><p>想尽各种办法，让电脑从优盘启动，进入try Ubuntu without install</p>
 <p>进入系统后打开终端，获得一个root权限</p>
-<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -<span class="built_in">i</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo -i</span><br></pre></td></tr></table></figure>
 <p>然后查看一下要备份的硬盘的结构</p>
-<p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>fdisk -u -l</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>fdisk -u -l</span><br></pre></td></tr></table></figure>
 <p>会出现一个表，sda下面有sda1——sda7的各个分区，从start到end，以512kb为单位进行了编排。</p>
 <p>看到这个表我们就可以用dd命令备份硬盘了，它是把硬盘里所有东西都给备份出来。当然我试过了，也可以按分区备份，比如单独备份sda7，也应该是可以的，但是我这是双系统，引导区什么的我又不懂，索性就都备份了吧。</p>
-<p>下面的命令，bs大概是一次备份的单位，count是按此单位备份的数量（是上面end的最大数+1，看数据能够理解），正常后面是要直接接of目标img文件的，可我这太大了，所以就用gzip压缩，指定了压缩目录。
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="attribute">bs</span>=512 <span class="attribute">count</span>=899022848 <span class="attribute">if</span>=/dev/sda8 | gzip -6 &gt; /media/ubuntu/硬盘/ghost.img.gz</span><br></pre></td></tr></table></figure></p>
+<p>下面的命令，bs大概是一次备份的单位，count是按此单位备份的数量（是上面end的最大数+1，看数据能够理解），正常后面是要直接接of目标img文件的，可我这太大了，所以就用gzip压缩，指定了压缩目录。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="attribute">bs</span>=512 <span class="attribute">count</span>=899022848 <span class="attribute">if</span>=/dev/sda8 | gzip -6 &gt; /media/ubuntu/硬盘/ghost.img.gz</span><br></pre></td></tr></table></figure></p>
 <p>备份过程很慢，大概8000多秒，想查看进度的话，在新的终端窗口驱动root权限后，输入</p>
-<p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>watch -n <span class="number">5</span> killall -USR1 dd</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>watch -n <span class="number">5</span> killall -USR1 dd</span><br></pre></td></tr></table></figure>
 <p>可以每5秒打印一次进度，5秒是可以调整的。</p>
-<h1>系统还原</h1>
-<p>还是在这个优盘的系统try Ubuntu without install里，当然，换了个电脑。打开终端，获取root权限，输入下面命令开始还原，还原度速度很慢，很慢……</p>
-<p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -dc <span class="regexp">/media/u</span>buntu<span class="regexp">/硬盘/g</span>host.img.gz | dd of=<span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure></p>
+<h1 id="系统还原"><a href="#系统还原" class="headerlink" title="系统还原"></a>系统还原</h1><p>还是在这个优盘的系统try Ubuntu without install里，当然，换了个电脑。打开终端，获取root权限，输入下面命令开始还原，还原度速度很慢，很慢……</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -dc <span class="regexp">/media/u</span>buntu<span class="regexp">/硬盘/g</span>host.img.gz | dd of=<span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure>
 <p>完事之后重启，自己就进了Windows10系统，没有Ubuntu啥事，这可不行啊。</p>
-<h1>修改引导</h1>
-<p>再次进入了优盘的try Ubuntu without install里，改一下超级用户的密码
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo passwd</span><br></pre></td></tr></table></figure></p>
+<h1 id="修改引导"><a href="#修改引导" class="headerlink" title="修改引导"></a>修改引导</h1><p>再次进入了优盘的try Ubuntu without install里，改一下超级用户的密码<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo passwd</span><br></pre></td></tr></table></figure></p>
 <p>我不知道用sudo -i可不可以，当时挺着急的了，这只是我试了好几个办法中的一个，不敢乱来，以后可以试试。</p>
-<p>安装一个修复软件
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo<span class="built_in"> add-apt-repository </span>ppa:yannubuntu/boot-repair</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install boot-repair</span><br><span class="line">$ sudo boot-repair</span><br></pre></td></tr></table></figure></p>
+<p>安装一个修复软件<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo<span class="built_in"> add-apt-repository </span>ppa:yannubuntu/boot-repair</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install boot-repair</span><br><span class="line">$ sudo boot-repair</span><br></pre></td></tr></table></figure></p>
 <p>在弹出的界面中按本能操作，只到出现成功successfully的消息，可以重启了。</p>
 <p>重启之后我们的目的基本达到了，然后界面里出现了一大堆的启动项，这不太好啊。</p>
-<h1>再补充一点</h1>
-<p>我们把这些没必要的启动项给删了，先取得root权限，然后到/boot/grub目录下找grub.cfg文件，里面相关的删一删，再重启，看看效果。</p>
+<h1 id="再补充一点"><a href="#再补充一点" class="headerlink" title="再补充一点"></a>再补充一点</h1><p>我们把这些没必要的启动项给删了，先取得root权限，然后到/boot/grub目录下找grub.cfg文件，里面相关的删一删，再重启，看看效果。</p>
 
         </div>
       </article>
