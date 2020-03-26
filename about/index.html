@@ -71,18 +71,18 @@
 		<textarea id="txtEditor"></textarea>
 		<br>
 		<div id="container"></div>
-		<div id="container2"></div>
+		<!-- <div id="container2"></div> -->
 		<script type="text/javascript">
 			const container = document.querySelector('#container');
-			const container2 = document.querySelector('#container2');
+			// const container2 = document.querySelector('#container2');
 			
 			// VTK renderWindow/renderer
 			const renderWindow = vtk.Rendering.Core.vtkRenderWindow.newInstance();
 			const renderer = vtk.Rendering.Core.vtkRenderer.newInstance();
 			renderWindow.addRenderer(renderer);
-			const renderWindow2 = vtk.Rendering.Core.vtkRenderWindow.newInstance();
-			const renderer2 = vtk.Rendering.Core.vtkRenderer.newInstance();
-			renderWindow2.addRenderer(renderer2);
+			// const renderWindow2 = vtk.Rendering.Core.vtkRenderWindow.newInstance();
+			// const renderer2 = vtk.Rendering.Core.vtkRenderer.newInstance();
+			// renderWindow2.addRenderer(renderer2);
 			
 			//WebGL/OpenGL impl
 			const openGLRenderWindow = vtk.Rendering.OpenGL.vtkRenderWindow.newInstance();
@@ -90,10 +90,10 @@
 			openGLRenderWindow.setSize(1000,1000);
 			renderWindow.addView(openGLRenderWindow);
 			
-			const openGLRenderWindow2 = vtk.Rendering.OpenGL.vtkRenderWindow.newInstance();
-			openGLRenderWindow2.setContainer(container2);
-			openGLRenderWindow2.setSize(1000,1000);
-			renderWindow2.addView(openGLRenderWindow2);
+			// const openGLRenderWindow2 = vtk.Rendering.OpenGL.vtkRenderWindow.newInstance();
+			// openGLRenderWindow2.setContainer(container2);
+			// openGLRenderWindow2.setSize(1000,1000);
+			// renderWindow2.addView(openGLRenderWindow2);
 			
 			// Interactor
 			const interactor = vtk.Rendering.Core.vtkRenderWindowInteractor.newInstance();
@@ -113,13 +113,13 @@
 			mapper.setInputConnection(cone.getOutputPort());
 			actor.setMapper(mapper);
 			renderer.addActor(actor);
-			renderer2.addActor(actor);
+			// renderer2.addActor(actor);
 			
 			// Render
 			renderer.resetCamera();
 			renderWindow.render();
-			renderer2.resetCamera();
-			renderWindow2.render();
+			// renderer2.resetCamera();
+			// renderWindow2.render();
 		</script>
 	</body>
 </html>

@@ -155,7 +155,7 @@
 <h2>开始备份</h2>
 <p>想尽各种办法，让电脑从优盘启动，进入try Ubuntu without install</p>
 <p>进入系统后打开终端，获得一个root权限</p>
-<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -<span class="built_in">i</span></span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo -i</span><br></pre></td></tr></table></figure></p>
 <p>然后查看一下要备份的硬盘的结构</p>
 <p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>fdisk -u -l</span><br></pre></td></tr></table></figure></p>
 <p>会出现一个表，sda下面有sda1——sda7的各个分区，从start到end，以512kb为单位进行了编排。</p>
