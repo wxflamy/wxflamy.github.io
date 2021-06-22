@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wxflamy.github.io/2019/10/31/linux-dd-copy-system/</loc>
+    <lastmod>2021-01-07</lastmod>
+  </url>  <url>
     <loc>https://wxflamy.github.io/2020/04/01/JavaScript-Learn1/</loc>
     <lastmod>2020-12-21</lastmod>
   </url>  <url>
@@ -17,9 +20,6 @@
     <lastmod>2020-02-27</lastmod>
   </url>  <url>
     <loc>https://wxflamy.github.io/2020/02/26/Method-for-importing-matlab-graphics-to-latex/</loc>
-    <lastmod>2020-02-25</lastmod>
-  </url>  <url>
-    <loc>https://wxflamy.github.io/2019/10/31/linux-dd-copy-system/</loc>
     <lastmod>2020-02-25</lastmod>
   </url>  <url>
     <loc>https://wxflamy.github.io/2020/02/25/use-realsense/</loc>

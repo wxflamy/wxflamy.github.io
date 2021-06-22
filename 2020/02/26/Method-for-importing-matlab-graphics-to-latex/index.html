@@ -97,7 +97,7 @@
             <li>
               <a href="/about">
                 
-                  保留页面
+                  仿真模型
                 
               </a>
             </li>
@@ -145,19 +145,13 @@
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
           <p><a href="https://blog.csdn.net/d_turtle/article/details/80740245" target="_blank" rel="noopener">参考链接</a></p>
-<h1>首先下载工具</h1>
-<p><a href="https://github.com/matlab2tikz/matlab2tikz" target="_blank" rel="noopener">地址</a></p>
-<h1>然后解压到MATLAB的工作目录中</h1>
-<h1>运行MATLAB程序，生成一张图片</h1>
-<p>在commond window 输入命令</p>
-<p><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; matlab2tikz(<span class="string">'plot1.tikz'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>会生成一个'plot1.tikz'文件</p>
-<h1>导入LaTeX</h1>
-<p>latex 文件所在目录下建一个名为tikz 的文件夹,将生成的tikz文件复制到tikz 文件夹下，并在latex中需添加如下代码：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line"></span><br><span class="line">\usepackage&#123;pgfplots&#125;</span><br><span class="line">\pgfplotsset&#123;compat=newest&#125;</span><br><span class="line">%% the following commands are needed for some matlab2tikz features</span><br><span class="line">\usetikzlibrary&#123;plotmarks&#125;</span><br><span class="line">\usetikzlibrary&#123;arrows.meta&#125;</span><br><span class="line">\usepgfplotslibrary&#123;patchplots&#125;</span><br><span class="line">\usepackage&#123;grffile&#125;</span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line"></span><br><span class="line">%% you may also want the following commands</span><br><span class="line">%\pgfplotsset&#123;plot coordinates/math parser=false&#125;</span><br><span class="line">%\newlength\figureheight</span><br><span class="line">%\newlength\figurewidth</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">  	\begin&#123;figure&#125;[h!]</span><br><span class="line">		\centering</span><br><span class="line">		\inputtikz&#123;plot1&#125;</span><br><span class="line">	\end&#123;figure&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="首先下载工具"><a href="#首先下载工具" class="headerlink" title="首先下载工具"></a>首先下载工具</h1><p><a href="https://github.com/matlab2tikz/matlab2tikz" target="_blank" rel="noopener">地址</a></p>
+<h1 id="然后解压到MATLAB的工作目录中"><a href="#然后解压到MATLAB的工作目录中" class="headerlink" title="然后解压到MATLAB的工作目录中"></a>然后解压到MATLAB的工作目录中</h1><h1 id="运行MATLAB程序，生成一张图片"><a href="#运行MATLAB程序，生成一张图片" class="headerlink" title="运行MATLAB程序，生成一张图片"></a>运行MATLAB程序，生成一张图片</h1><p>在commond window 输入命令</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; matlab2tikz(<span class="string">'plot1.tikz'</span>)</span><br></pre></td></tr></table></figure>
+<p>会生成一个’plot1.tikz’文件</p>
+<h1 id="导入LaTeX"><a href="#导入LaTeX" class="headerlink" title="导入LaTeX"></a>导入LaTeX</h1><p>latex 文件所在目录下建一个名为tikz 的文件夹,将生成的tikz文件复制到tikz 文件夹下，并在latex中需添加如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line"></span><br><span class="line">\usepackage&#123;pgfplots&#125;</span><br><span class="line">\pgfplotsset&#123;compat=newest&#125;</span><br><span class="line">%% the following commands are needed for some matlab2tikz features</span><br><span class="line">\usetikzlibrary&#123;plotmarks&#125;</span><br><span class="line">\usetikzlibrary&#123;arrows.meta&#125;</span><br><span class="line">\usepgfplotslibrary&#123;patchplots&#125;</span><br><span class="line">\usepackage&#123;grffile&#125;</span><br><span class="line">\usepackage&#123;amsmath&#125;</span><br><span class="line"></span><br><span class="line">%% you may also want the following commands</span><br><span class="line">%\pgfplotsset&#123;plot coordinates/math parser=false&#125;</span><br><span class="line">%\newlength\figureheight</span><br><span class="line">%\newlength\figurewidth</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">  	\begin&#123;figure&#125;[h!]</span><br><span class="line">		\centering</span><br><span class="line">		\inputtikz&#123;plot1&#125;</span><br><span class="line">	\end&#123;figure&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure></p>
 <p>实际使用要做适当调整</p>
-<h1>这样就在生成的PDF文件中看到图片了</h1>
-<p>有一些小的技巧，以后再补充</p>
+<h1 id="这样就在生成的PDF文件中看到图片了"><a href="#这样就在生成的PDF文件中看到图片了" class="headerlink" title="这样就在生成的PDF文件中看到图片了"></a>这样就在生成的PDF文件中看到图片了</h1><p>有一些小的技巧，以后再补充</p>
 
         </div>
       </article>
@@ -238,7 +232,7 @@
 <!-- Footer -->
 <footer class="site-info">
   <p>
-    <span>我才睡醒的后院 &copy; 2020</span>
+    <span>我才睡醒的后院 &copy; 2021</span>
     
       <span class="split">|</span>
       <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
