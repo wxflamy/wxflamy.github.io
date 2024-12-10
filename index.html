@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"/images/avatar2.svg","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"/images/avatar2.svg","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags|| tags","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"hello word!","category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -170,6 +170,18 @@
                     
                         
                         <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
                             <a class="menu-text-color border-box" href="/about">
                                 
                                 关于
@@ -220,6 +232,22 @@
                 
                 <li class="drawer-menu-item border-box not-sub-menu">
                     <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
                             
                             关于
@@ -245,6 +273,15 @@
                 
 
                     <div class="home-content-container fade-in-down-animation">
+    
+        <div class="website-announcement border-box">
+            <i class="icon left fa-solid fa-bullhorn"></i>
+            <div class="announcement border-box text-ellipsis">
+                <p>hello word!</p>
+
+            </div>
+            <i class="icon right close fa-solid fa-close"></i>
+        </div>
     
     <ul class="home-post-list border-box">
         
@@ -286,6 +323,15 @@ $x^3_2$
 
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/JavaScript/">JavaScript</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -397,6 +443,21 @@ $x^3_2$
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/collision-detection/">collision detection</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ROS/">ROS</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SolidWorks/">SolidWorks</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
         
@@ -450,6 +511,21 @@ $x^3_2$
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TensorFlow2-0/">TensorFlow2.0</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Python/">Python</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/google/">google</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
         
@@ -502,6 +578,21 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
 
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/VTK/">VTK</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/collision-detection/">collision detection</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/OBB/">OBB</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -558,6 +649,18 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/MATLAB/">MATLAB</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/LaTeX/">LaTeX</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
         
@@ -610,6 +713,21 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/realsense/">realsense</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ROS/">ROS</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SLAM/">SLAM</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
         
@@ -659,6 +777,21 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
 
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TensorFlow2-0/">TensorFlow2.0</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Colab/">Colab</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -711,6 +844,21 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/linux/">linux</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/">双系统</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%B3%BB%E7%BB%9F%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F/">系统备份还原</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
         
@@ -760,6 +908,18 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
 
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A1%8C%E4%B8%9A%E6%96%B0%E9%97%BB/">机器人行业新闻</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/siasun/">siasun</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -830,13 +990,29 @@ Description这个示例使用vtkOBBTree返回一条线和数据集的所有交�
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Dawn Hill</a>
         
     </div>
-
     <div class="theme-info info-item">
         由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
     </div>
-
     
 
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
     
 
     
