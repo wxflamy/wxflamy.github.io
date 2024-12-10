@@ -262,10 +262,13 @@
 
                     
                          <h1 id="EtherCAT系统组成"><a href="#EtherCAT系统组成" class="headerlink" title="EtherCAT系统组成"></a>EtherCAT系统组成</h1><p>EtherCAT是一种实时工业以太网技术，它使用<strong>主从介质访问控制（media access control, MAC）</strong>，主站发送以太网帧给主从站，从站从数据帧中抽取数据或将数据插入数据帧。主站使用标准的以太网接口卡（其实就是网卡吧），从站使用专门的需要花钱买的从站控制器ESC（EtherCAT Slave Controller）。</p>
-<p>EtherCAT主站与从站连接的网络结构通常是这样的（我要用的是这样的，当然还有其他的结构）。<br><img   src="/EtherCAT-SOEM-1/EtherCAT_P_OneCableSolution.png"  alt="EtherCAT网络结构"></p>
+<p>EtherCAT主站与从站连接的网络结构通常是这样的（我要用的是这样的，当然还有其他的结构）。</p>
+<img   src="/2019/09/26/EtherCAT-SOEM-1/EtherCAT_P_OneCableSolution.png"  class="" title="EtherCAT网络结构">
+
 <p>每一个从站都可以在报文中读取数据和插入数据，这种从站可以用来控制电机和传感器。</p>
 <h1 id="EtherCAT协议"><a href="#EtherCAT协议" class="headerlink" title="EtherCAT协议"></a>EtherCAT协议</h1><p>分析协议，要知道EtherCAT命令是在以太网报文的数据区域传输的，可以通过特殊的以太类型编码，也可以通过UDP&#x2F;IP编码。第一种变体仅限于以太网子网，而第二种变体专为时间要求较低的应用程序设计，支持正常的IP路由。而我们要的显然是时间要求高一点的特殊以太类型编码。</p>
-<p>一个EtherCAT报文由数个子报文组成，总长度在44~1498字节之间。每个子报文分为10字节的报文头、0~1486字节的数据和2字节的工作计数器三个部分。这个工作计数器根据EtherCAT命令所寻址并交换了相关数据的所有EtherCAT设备递增。EtherCAT的报文结构参考下图，<br><img   src="/EtherCAT-SOEM-1/EtherCAT-datagrams.jpg"  alt="EtherCAT报文结构"></p>
+<p>一个EtherCAT报文由数个子报文组成，总长度在44~1498字节之间。每个子报文分为10字节的报文头、0~1486字节的数据和2字节的工作计数器三个部分。这个工作计数器根据EtherCAT命令所寻址并交换了相关数据的所有EtherCAT设备递增。EtherCAT的报文结构参考下图，</p>
+<img   src="/2019/09/26/EtherCAT-SOEM-1/EtherCAT-datagrams.jpg"  class="" title="EtherCAT报文结构">
 <ul>
 <li>Cmd：表示EtherCAT指令类型，即应当如何处理后面的数据。</li>
 <li>Idx：表示帧的索引号，用来帮助主站对报文进行识别。</li>
@@ -293,10 +296,13 @@
 <li>Mailbox Mode邮箱模式：<br>邮箱模式用于实现数据交换的握手机制。EtherCAT主站和应用程序只有在其他程序访问结束时才有权限对缓存进行访问。当发送方写入缓冲区时，缓冲区被锁定以便写入，直到接收方将其读出来。邮箱模式通常用于应用程序层协议和交换非循环数据(SDO)(例如，参数设置)</li>
 <li>Buffered Mode缓存模式：<br>缓冲模式通常用于循环数据交换,即过程数据(PDO)。由于缓冲模式允许双方随时访问通信缓冲区，发送方始终可以更新缓冲区的内容。如果缓冲区的写入速度快于接收器的读取速度，则会丢弃旧数据。因此，接收方总是获得由发送方编写的最新一致的缓冲区内容。</li>
 </ul>
-<p><img   src="/EtherCAT-SOEM-1/syncmanager_mailbox.png"  alt="同步管理器邮箱模式"><br><img   src="/EtherCAT-SOEM-1/syncmanager_buffer.png"  alt="同步管理器缓存模式"></p>
+<img   src="/2019/09/26/EtherCAT-SOEM-1/syncmanager_mailbox.png"  class="" title="同步管理器邮箱模式">
+<img   src="/2019/09/26/EtherCAT-SOEM-1/syncmanager_buffer.png"  class="" title="同步管理器缓存模式">
+
 <h1 id="EtherCAT状态机（EtherCAT-State-Machine-ESM）"><a href="#EtherCAT状态机（EtherCAT-State-Machine-ESM）" class="headerlink" title="EtherCAT状态机（EtherCAT State Machine, ESM）"></a>EtherCAT状态机（EtherCAT State Machine, ESM）</h1><p>每个EtherCAT从设备都实现了EtherCAT状态机如下图，该状态机管理从设备的功能，因为在每个时刻，实际状态都定义了可用的函数范围。</p>
 <p>EtherCAT从站定义了四个强制状态和一个可选状态:Init、Pre-Operating、Safe-Operating、Operational、Bootstrap(可选)。对于每个状态的更改，EtherCAT主设备必须向EtherCAT从设备发送一系列特定于从设备的命令。</p>
-<p><img   src="/EtherCAT-SOEM-1/etherCAT_states.png"  alt="etherCAT_states"></p>
+<img   src="/2019/09/26/EtherCAT-SOEM-1/etherCAT_states.png"  class="" title="etherCAT_states">
+
 <h3 id="每个EtherCAT状态的可用函数"><a href="#每个EtherCAT状态的可用函数" class="headerlink" title="每个EtherCAT状态的可用函数"></a>每个EtherCAT状态的可用函数</h3><ul>
 <li><strong>Init</strong>初始化状态:<ul>
 <li>主站：初始化状态。</li>
