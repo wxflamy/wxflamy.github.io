@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="hello">
+    <meta name="author" content="Dawn Hill">
+    
+    <title>
+        
+            Install TensorFlow 2.0 in Colab |
+        
+        我才睡醒的后院
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://wxflamy.github.io/images/avatar.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"/images/avatar2.svg","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain.","hitokoto":true},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar2.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               我才睡醒的后院
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Install TensorFlow 2.0 in Colab
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar2.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Dawn Hill</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2020-02-24 10:09:59</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Feb 24 2020 13:38:01 GMT+0800">2020-02-24 13:38:01</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TensorFlow2-0/">TensorFlow2.0</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Colab/">Colab</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>谷歌发布了即将发布的TensorFlow 2.0的测试版本，用于测试和实验。TensorFlow 2.0是TensorFlow的升级版，为下一代深度学习应用的开发提供了许多新特性和增强。一旦它发布在产品中，就可以使用高度可扩展的深度学习应用程序，这些应用程序可以运行在分布式集群、移动设备、边缘设备和web浏览器中。因此，开发人员应该学习TensorFlow 2.0并掌握TensorFlow的这个版本，以便开发深度学习模型。</p>
+<p>在本节中，我们将向您展示如何在Colab环境中安装TensorFlow 2.0。您将能够连接到Colab环境来测试和运行您的示例应用程序。谷歌Colab提供了用于运行代码的web浏览器界面。这是一个简短的教程，将教你如何在谷歌Colab环境中安装TensorFlow 2.0，然后运行一个程序来查看TensorFlow的版本。<a class="link"   target="_blank" rel="noopener" href="https://www.roseindia.net/tensorflow/tensorflow2/install-tensorflow-2.0-in-colab.shtml" >参考链接<i class="fas fa-external-link-alt"></i></a>. </p>
+<h1 id="步骤1-连接到谷歌Colab环境"><a href="#步骤1-连接到谷歌Colab环境" class="headerlink" title="步骤1:连接到谷歌Colab环境"></a>步骤1:连接到谷歌Colab环境</h1><p>首先，你必须连接到谷歌Colab环境。谷歌协作是一项免费服务，开发者可以通过谷歌的云实例在CPU和GPU上尝试TensorFlow。该服务是完全免费的，以提高Python编程技能，开发人员可以登录他们的谷歌Gmail帐户，并连接到该服务。在这里，开发人员可以使用Keras、TensorFlow、PyTorch、OpenCV等流行的机器学习库来尝试深度学习应用程序。如果您在谷歌搜索中搜索Google Colab，那么您将看到以下详细信息。</p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/google-colab.jpg"  alt="Google Colab搜索结果"></p>
+<p>现在访问<a class="link"   target="_blank" rel="noopener" href="https://colab.research.google.com/" >https://colab.research.google.com/<i class="fas fa-external-link-alt"></i></a>，您将看到以下信息:</p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/google-colab-home.jpg"  alt="Colab主页"></p>
+<h1 id="步骤2-创建Notebook"><a href="#步骤2-创建Notebook" class="headerlink" title="步骤2:创建Notebook"></a>步骤2:创建Notebook</h1><p>步骤是创建一个python3笔记本，安装TensorFlow 2.0并在谷歌Colab环境中运行python代码。要创建一个新的笔记本，点击文件，然后选择“新的Python 3笔记本”选项，如下图所示:</p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/google-colab-new-python3-notebook.jpg"  alt="创建Notebook"></p>
+<p>以上选项将创建一个空白的Python 3笔记本，如下图所示:</p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/google-colab-first-notebook.jpg"  alt="空白的Notebook"></p>
+<p>谷歌Colab工具的默认名称为“Untitled0”。你可以改变。我已经将它改为“installing_tensorflow_2.0.ipynb”。</p>
+<p><strong>其实上面的没啥用，从谷歌的云端硬盘创建Colaboratory很香的</strong></p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/Google_Colaboratory.png"  alt="从云端硬盘创建Colaboratory"></p>
+<h1 id="步骤3-连接到CPU-GPU"><a href="#步骤3-连接到CPU-GPU" class="headerlink" title="步骤3:连接到CPU&#x2F;GPU"></a>步骤3:连接到CPU&#x2F;GPU</h1><p>点击连接，然后选择“连接到托管运行时”到谷歌Colab服务器，如下图所示:</p>
+<p><img src="/Install-TensorFlow-2-0-in-Colab/connect-to-google-colab-hosted-runtime.jpg" alt="连接到CPU/GPU"></p>
+<p>成功连接到托管服务后，它将在基于谷歌Colab浏览器的开发环境中显示以下图标:</p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/connected-to-google-colab-hosted-runtime.jpg"  alt="成功连接到托管服务"></p>
+<p><strong>点击“编辑-&gt;notebook setting”可以为Colab装一个免费的GPU</strong><br><img   src="/Install-TensorFlow-2-0-in-Colab/notebook_setting.png"  alt="配置GPU"><br><strong>目前GPU是Tesla T4，应该挺贵吧，据说一次可以免费用4小时</strong><br><img   src="/Install-TensorFlow-2-0-in-Colab/GPUInfo.png"  alt="GPU信息"></p>
+<h1 id="步骤4-检查默认安装的TensorFlow版本"><a href="#步骤4-检查默认安装的TensorFlow版本" class="headerlink" title="步骤4:检查默认安装的TensorFlow版本"></a>步骤4:检查默认安装的TensorFlow版本</h1><p>现在在工具中运行以下Python命令来检查环境中安装的TensorFlow的版本:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="built_in">print</span>(tf.__version__)</span><br></pre></td></tr></table></figure>
+<p>运行代码按Ctrl+Enter按钮或点击运行图标如下图所示:<br><img   src="/Install-TensorFlow-2-0-in-Colab/google-colab-checking-tensorflow-version.jpg"  alt="TensorFlow版本"><br>现在运行代码来查看TensorFlow的版本。程序显示“1.14.0-rc1”。默认情况下，TensorFlow的生产就绪版本安装在服务器上。现在我们将首先卸载预安装的TensorFlow，然后安装TensorFlow 2.0。</p>
+<h1 id="步骤5-从谷歌Colab环境中卸载TensorFlow"><a href="#步骤5-从谷歌Colab环境中卸载TensorFlow" class="headerlink" title="步骤5:从谷歌Colab环境中卸载TensorFlow"></a>步骤5:从谷歌Colab环境中卸载TensorFlow</h1><p>要卸载预先安装的TensorFlow，请运行以下命令:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip uninstall tensorflow</span><br></pre></td></tr></table></figure>
+<p>以上命令会要求你确认后再卸载，如下图所示:<br><img   src="/Install-TensorFlow-2-0-in-Colab/uninstall-tensorflow-from-google-colab.jpg"  alt="卸载TensorFlow"><br>以上步骤将从谷歌Colab环境中卸载TensorFlow。</p>
+<h1 id="步骤6-安装TensorFlow-2-0"><a href="#步骤6-安装TensorFlow-2-0" class="headerlink" title="步骤6:安装TensorFlow 2.0"></a>步骤6:安装TensorFlow 2.0</h1><p>现在运行以下命令在谷歌Colab环境中安装TensorFlow 2.0 beta版本:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install tensorflow==<span class="number">2.0</span><span class="number">.0</span>-beta1</span><br></pre></td></tr></table></figure>
+<p>当TensorFlow 2.0.0作为产品版本发布时。要安装TensorFlow2.0.0，请运行以下命令:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install tensorflow==<span class="number">2.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<p>以下是整个过程的截图:</p>
+<p><img   src="/Install-TensorFlow-2-0-in-Colab/install-tensorflow-2.0-beta-on-google-colab.jpg"  alt="安装TensorFlow2.0"><br>现在你必须重新启动运行，如下图所示:<br><img   src="/Install-TensorFlow-2-0-in-Colab/restart-google-colab-environment.jpg"  alt="重新启动"></p>
+<h1 id="步骤7-测试TensorFlow-2-0"><a href="#步骤7-测试TensorFlow-2-0" class="headerlink" title="步骤7:测试TensorFlow 2.0"></a>步骤7:测试TensorFlow 2.0</h1><p>现在运行代码来检查安装在谷歌Colab环境中的TensorFlow 2.0版本。下面是程序输出的屏幕截图:<br><img   src="/Install-TensorFlow-2-0-in-Colab/tensorflow2-on-google-colab.jpg"  alt="查看TensorFlow2.0"><br>祝贺您在谷歌Colab环境中成功安装了TensorFlow 2.0 beta。现在可以编写程序和测试了。</p>
+<p>在本教程中，我已经向您解释了在谷歌Colab环境中安装最新版本的TensorFlow 2.0的步骤。您可以在<a class="link"   target="_blank" rel="noopener" href="https://www.roseindia.net/tensorflow/tensorflow2/index.shtml" >TensorFlow 2.0教程<i class="fas fa-external-link-alt"></i></a>部分查看更多教程。</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xRErvFLy_xQ?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                Install TensorFlow 2.0 in Colab
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2020/02/24/Install-TensorFlow-2-0-in-Colab/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Dawn Hill</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2020-02-24 10:09</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/TensorFlow2-0/">TensorFlow2.0</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Colab/">Colab</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/AI/">AI</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/20180117213756040.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="fa-solid fa-gift"></i>&nbsp;打赏作者
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2020/02/25/use-realsense/"
+                                   title="Use-Realsense"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Use-Realsense</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2019/10/31/linux-dd-copy-system/"
+                                   title="在Linux环境下使用dd命令复制迁移双系统记录"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">在Linux环境下使用dd命令复制迁移双系统记录</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz',
+              appKey: 'd4PiRnGvC6uCNyAxuNGYINMb',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2019</span>&nbsp;-&nbsp;2024
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Dawn Hill</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

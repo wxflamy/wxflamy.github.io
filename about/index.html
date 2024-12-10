@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="URT-8">
+        <title> hello Robot</title>
+    </head>
+    <body>
+        <div class="main-container" id="main" style="width:60%;">
+            
+        </div>
+           
+        <div id="pdiv" class="div">
+            <iframe src="index_inner.html" width="100%" height="100%" frameborder="0">
+            您的浏览器不支持iframe，请升级
+            </iframe>
+        </div>
+        <script>
+            // alert("hello");
+            var minLength = document.body.clientWidth;
+            if(minLength > document.body.clientHeight){
+                minLength = document.body.clientHeight;
+            }
+            // alert(minLength);
+            document.getElementById("pdiv").style.margin="auto";
+            document.getElementById("pdiv").style.width=minLength*0.9;
+            document.getElementById("pdiv").style.height=minLength*0.9;
+            document.getElementById("pdiv").style.textAlign="center";
+            function over(ooj){
+                ooj.innerHTML = "Hello";
+            }
+            function out(ooj){
+                ooj.innerHTML = "Bye";
+            }
+        </script>
+        <!-- <script type="text/javascript" src="https://unpkg.com/vtk.js"></script> -->
+    </body>
+</html>

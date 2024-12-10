@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="hello">
+    <meta name="author" content="Dawn Hill">
+    
+    <title>
+        
+            在Windows环境下使用SOEM进行EtherCAT开发——准备篇 |
+        
+        我才睡醒的后院
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://wxflamy.github.io/images/avatar.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"/images/avatar2.svg","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain.","hitokoto":true},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar2.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               我才睡醒的后院
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        在Windows环境下使用SOEM进行EtherCAT开发——准备篇
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar2.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Dawn Hill</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-09-25 11:21:59</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Sep 26 2019 15:28:50 GMT+0800">2019-09-26 15:28:50</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/EtherCAT/">EtherCAT</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Windows/">Windows</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SOEM/">SOEM</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>[toc]</p>
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>很久前就听说过EtherCAT，还专门看了通信协议，什么协议栈，什么状态机，什么数据字典，什么1060，什么PDO，什么SDO的，但是一直很懵圈。原因我总结了一下，抱着文档抱着书本，不行啊！</p>
+<p>我能搞到EtherCAT的Slave，也就是从站，所以我就想，我自己学学开发EtherCAT主站，发发命令，接收命令，读读反馈信息，这不就摸索一下就会了吗。</p>
+<p>然后我就查，首先收费的肯定排除了。那倍福相关的东西就被我屏蔽掉了。然后眼前就浮现出了IGH和SOEM。因为我发现某产品用的IGH，所以我IGH折腾了挺长时间（当然是业余折腾，不影响工作和陪儿子玩），在Linux系统中编译，居然有教程里说补实时补丁，我Linux系统里还有好多别的东西呢，我这个就是试试啊，万一整崩溃了，可亏了，不打补丁，然后稀里糊涂的编过了，也一直没拿从站试，试也没想好怎么试，感觉太难了。然后就过了好久。</p>
+<p>最近用了一个EtherCAT的驱动器，编码器总有问题，总要清错，是在不爱拆开插USB清错了，连上一根网线，几条命令就搞定的话该有多好，于是今天又想到了还有一个选项，可以在Windows环境下用SOEM。</p>
+<p>其实我连SOEM全称还说不对呢。</p>
+<h1 id="正式开始准备"><a href="#正式开始准备" class="headerlink" title="正式开始准备"></a>正式开始准备</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>首先在百度上正经的搜了一下SOEM，第一个弹出来的应该就是官方网站了。据我的经验靠谱的资料还是靠官方，官方搞不懂搜CSDN，资料太少再谷歌，毕竟翻墙一次不容易，要点好几下。<br><img   src="/EtherCAT-SOEM/baidu_soem_20190925132558.png"  alt="百度搜索SOEM结果"><br>打开果断再点一下主站相关内容<a class="link"   target="_blank" rel="noopener" href="http://openethercatsociety.github.io/doc/soem/index.html" >SOEM (Simle Open EtherCAT Master)<i class="fas fa-external-link-alt"></i></a>，在这里我注意到了SOEM的全称。</p>
+<p>这个页面告诉我们，SOEM是用c语言写的EtherCAT主站库，它的目的是学而用，所有人都可以通过研究源码来理解EtherCAT主站是如何与从站进行交互的。在Windows系统中使用SOEM需要具备以下条件。</p>
+<ul>
+<li>Windows2000 - Windows 7 (8 not tested, might work).</li>
+<li>VC compiler (others might work, just not tested).</li>
+<li>One (or two if in redundant mode) 100Mb&#x2F;s NIC that can connect to a RAW socket.</li>
+<li>WinPcap installed.</li>
+</ul>
+<p>第一项我就不符合，我Win10啊，咋整，重装系统？不行。再往下看吧。VC编译器，这个可以，现成的。第三个不知道是啥玩意儿，好像是网卡，是不是能插网线就可以，不知道，继续吧。WinPcap这个肯定是个软件，我一搜，<a class="link"   target="_blank" rel="noopener" href="https://www.winpcap.org/" >找到了<i class="fas fa-external-link-alt"></i></a>。这种东西一定要去官网下，找到合适自己的版本。不然你就等着折腾吧。按照某些所谓的教程，一步接着一步来，都不知道自己在干啥。</p>
+<h2 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h2><p>源码地址要去官方地方找：<a class="link"   target="_blank" rel="noopener" href="https://github.com/OpenEtherCATsociety/SOEM" >https://github.com/OpenEtherCATsociety/SOEM<i class="fas fa-external-link-alt"></i></a><br>我下的压缩包，然后解压，发现里面有个CMakeLists.txt文件，不错，感觉好熟悉。<br>于是，我打开了神奇的CMake 3.15.3 简单配置了一下。</p>
+<p><img   src="/EtherCAT-SOEM/cmake_20190925134715.png"  alt="cmake配置源码"><br>自然而然地点击了Configure之后又点击了Generate。</p>
+<p>然后打开了前几天新安的Visual Studio 2019 免费版。找到生成的工程文件，<strong>SOEM.sln</strong>，整个过程特别熟悉：生成(B)-&gt;批生成(T)…-&gt;勾上ALL_BUILD-&gt;点击生成(B)，不大一会儿就完事了。如果想看看都生成了啥可以点一下INSTALL，就能在一个提前设置好的地方看到生成的可执行程序、lib文件、头文件了。估计以后会用得到。</p>
+<h2 id="简单的测试"><a href="#简单的测试" class="headerlink" title="简单的测试"></a>简单的测试</h2><p>代码编译好了之后咋用呢？简单的测试不简单啊！</p>
+<p>我回到了SOEM主站介绍的网页，看到了特别亲切的一个词<strong>Tutorial</strong>，它就在正文第一行，怎么刚才没看见，选择性眼盲啊。打开一看，哇！感觉从基础到专业的内容都有了。开啃吧。</p>
+<blockquote>
+<p>SOEM是一个为用户应用程序提供发送和接收EtherCAT帧的方法库。它为应用程序提供下列方法:</p>
+<ul>
+<li>通过SOEM发送和接收数据来读写“过程数据”</li>
+<li>保持本地IO数据与全局IO映射同步</li>
+<li>检测SOEM报告的错误</li>
+<li>管理SOEM报告的错误</li>
+</ul>
+</blockquote>
+<p>好像第三第四条就是我想要的，当然前两条要是也能学会就更好了。</p>
+<blockquote>
+<p>下面几节将展示一些关于如何启动和运行SOEM的<strong>基本示例</strong>，以及如何使用过程数据和检查错误。由于所有代码都是应用程序或全局变量的本地代码，所以可以在可能的情况下进行调整和优化。</p>
+</blockquote>
+<p>哇，<strong>基本示例</strong>，好激动。</p>
+<blockquote>
+<p>下面的示例展示了如何添加由启动代码调用的主函数。在这个例子中，main的唯一目的是生成一个执行SOEM的新任务。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">   rprintp(<span class="string">&quot;SOEM (Simple Open EtherCAT Master)\nSimple test\n&quot;</span>);</span><br><span class="line">   task_spawn (<span class="string">&quot;simpletest&quot;</span>, simpletest, <span class="number">9</span>, <span class="number">8192</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+<p>这是个什么玩意儿？这也叫例子？<strong>rprintp</strong>是啥啊？<strong>task_spawn</strong>任务启动？难道这是伪代码？**”simpletest”*<em>，这个我好像看到过哦？继续看吧……懵……<br>下面讲SOEM配置了，Configuration嘛。<br>在应用程序启动之后，我们需要设置NIC作为EtherCAT以太网接口。在一个简单的设置中，我们调用</em>ec_init(ifname)<em>，如果SOEM支持电缆冗余，我们调用</em>ec_init_redundant<em>，它将打开第二个端口作为备份。如果您在nicdrv.c中选择了一个专用NIC，则可以将</em>ifname<em>赋值为</em>NULL*进行发送。如果成功，它将返回&gt;0的值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* initialise SOEM, bind socket to ifname */</span></span><br><span class="line"><span class="keyword">if</span> (ec_init(ifname) &gt; <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>ヾ(≧O≦)〃嗷~，这一段，信息量太大。<strong>NIC</strong>是啥？查了一下，network interface controller，网络接口控制器，又叫网络适配器，也就是网卡。要设置网卡，咋设置？用*ec_init(ifname)*设置，那这个<strong>ifname</strong>就顺理成章的是网卡咯？这玩意儿的值咋给啊？</p>
+</blockquote>
+<p>你们猜文档后面会说不，我猜不会，所以我查别的去了。</p>
+<p>在CSDN上查到了两篇博客</p>
+<p><img   src="/EtherCAT-SOEM/blog1_20190925143615.png"  alt="编译SOEM-windows篇"></p>
+<p><img   src="/EtherCAT-SOEM/blog2_20190925144016.png"  alt="EtherCAT-SOEM官方教程"></p>
+<p>神人就是多啊。</p>
+<blockquote>
+<p>这个函数主要是初始化SOEM，将网卡和socket绑定起来。其中ifname是个const char*类型的字符串，可以运行slaveinfo.c来获取。比如我的电脑就是：<br>\Device\NPF_{9A10D941-1301-4A51-A856-024B1399EA32}</p>
+</blockquote>
+<p>不过我发现他俩文字中电脑的NIC一样的，但是第一个图片里的好像不是，不过无所谓了，反正能搞到NIC了。</p>
+<p>打开我们刚才编译的那个工程文件，把slaveinfo设为默认启动程序，像这样</p>
+<p><img   src="/EtherCAT-SOEM/slaveinfo_20190925144739.png"  alt="默认启动slaveinfo"></p>
+<p>然后就启动啊，看到了啥没？眼睛要是快的话是能看到的，不过我估计大部分人看不到。我在*return(0)<em>的前面加了一条</em>getchar()*，然后我这慢眼神终于看清了。这个过程写起来简单，对于那么快就懵的我，还是历经波折的。</p>
+<p><img   src="/EtherCAT-SOEM/slaveinfo_20190925145328.png"  alt="NIC信息"></p>
+<p>找到了就快启动simpletest测试一下吧，好激动啊。<br>网口连上EtherCAT从站，</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">simple_test</span>.exe \Device\NPF_&#123;<span class="number">727</span>D913F-<span class="number">23</span>BC-<span class="number">421</span>F-A071-<span class="number">7</span>F597A7026B4&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果来啦，成功找到了从站。</p>
+<p><img   src="/EtherCAT-SOEM/slaves_found_20190925114741.png"  alt="从站找到啦"></p>
+<p>我觉得到了这一步，我说的话它就能听见了，它说的我也能看见了。懂不懂另说。</p>
+<p>先来看看它说了啥。</p>
+<ul>
+<li>它说它找到了一个一个从站，没错啊，我就连了一个！太好了还给我配置好了。</li>
+<li>它说从站映射了，从站状态是<strong>SAFE_OP</strong>，大写字母第一眼没看懂，就是安全运行状态呗。<br>这里涉及到一个词<strong>状态机</strong>，具体内容<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/u014311679/article/details/90719747" >这个博客说的特别清楚<i class="fas fa-external-link-alt"></i></a>。</li>
+<li>接着是从站IO信息，大概是有几个分段，每个分段多长吧。</li>
+<li>接着是一些从站的输入输出数据，workcounter有三个，每个从站有一个输入、两个输出（还不是很清楚原因）。</li>
+<li>然后是从站的输出和输入数据和时间值。</li>
+</ul>
+<h1 id="后面预告"><a href="#后面预告" class="headerlink" title="后面预告"></a>后面预告</h1><p>关于EtherCAT的内容，粗略了解之后其实应该系统的学习一下，最好有个学习指导材料啥的，最近找到一个加泰罗尼亚理工大学一个机器人实验室的网站有介绍EtherCAT的wiki，可以接下来研究学习一下。<br><a class="link"   target="_blank" rel="noopener" href="https://sir.upc.edu/wikis/roblab/index.php/Development/Ethercat" >https://sir.upc.edu/wikis/roblab/index.php/Development/Ethercat<i class="fas fa-external-link-alt"></i></a></p>
+<hr>
+<p><img   src="https://wxflamy.github.io/images/20180117213756040.jpg"  alt="要有勇气打赏啊"></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                在Windows环境下使用SOEM进行EtherCAT开发——准备篇
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2019/09/25/EtherCAT-SOEM/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Dawn Hill</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2019-09-25 11:21</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/EtherCAT/">EtherCAT</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Windows/">Windows</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SOEM/">SOEM</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+                    
+
+<div class="reward-author-container border-box flex-center">
+    <div class="reward-btn border-box flex-center tooltip tooltip-img"
+            data-tooltip-img-url="/images/20180117213756040.jpg"
+            data-tooltip-img-trigger="click"
+            data-tooltip-img-style="top: -6px;"
+    >
+        <i class="fa-solid fa-gift"></i>&nbsp;打赏作者
+    </div>
+</div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2019/09/26/EtherCAT-SOEM-1/"
+                                   title="在Windows环境下使用SOEM进行EtherCAT开发——协议篇"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">在Windows环境下使用SOEM进行EtherCAT开发——协议篇</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2019/07/04/hello-world/"
+                                   title="Hello World"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Hello World</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz',
+              appKey: 'd4PiRnGvC6uCNyAxuNGYINMb',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2019</span>&nbsp;-&nbsp;2024
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Dawn Hill</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
