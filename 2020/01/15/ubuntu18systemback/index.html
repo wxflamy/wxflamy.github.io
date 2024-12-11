@@ -9,7 +9,7 @@
     
     <title>
         
-            Use-Realsense |
+            使用 Systemback 制作ROS系统镜像 |
         
         我才睡醒的后院
     </title>
@@ -212,14 +212,14 @@
 
                     
 <div class="fade-in-down-animation">
-    <div class="post-page-container border-box">
+    <div class="post-page-container border-box encrypt">
         <div class="post-content-container border-box">
             
 
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Use-Realsense
+                        使用 Systemback 制作ROS系统镜像
                     </div>
                 
 
@@ -247,13 +247,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2020-02-25 14:34:45</span>
+                <span class="datetime">2020-01-15 10:15:23</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Feb 25 2020 14:41:32 GMT+0800">2020-02-25 14:41:32</span>
+                    <span class="datetime" data-updated="Wed Dec 11 2024 09:11:52 GMT+0800">2024-12-11 09:11:52</span>
                 </span>
             
         
@@ -264,13 +264,13 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Ubuntu/">Ubuntu</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/systemback/">systemback</a></li>
+                        
+                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ROS/">ROS</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/realsense/">realsense</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SLAM/">SLAM</a></li>
                         
                     
                 </ul>
@@ -279,13 +279,9 @@
 
         
         
-            <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>605 字</span>
-            </span>
-        
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
             </span>
         
         
@@ -307,29 +303,15 @@
                     
 
                     
-                         <p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41839222/article/details/86503113" >参考链接<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="安装卸载指导："><a href="#安装卸载指导：" class="headerlink" title="安装卸载指导："></a>安装卸载指导：</h1><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md" >https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md<i class="fas fa-external-link-alt"></i></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt-get install librealsense2-dkms</span><br><span class="line">$ <span class="built_in">sudo</span> apt-get install librealsense2-utils</span><br></pre></td></tr></table></figure></p>
-<p>进行程序开发和调试的时候会用到：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt-get install librealsense2-dev</span><br><span class="line">$ <span class="built_in">sudo</span> apt-get install librealsense2-dbg</span><br></pre></td></tr></table></figure></p>
-<p>安装完了之后看看这个能打开吧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rs-capture</span><br></pre></td></tr></table></figure></p>
-<h1 id="ROS的功能包："><a href="#ROS的功能包：" class="headerlink" title="ROS的功能包："></a>ROS的功能包：</h1><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/IntelRealSense/realsense-ros" >https://github.com/IntelRealSense/realsense-ros<i class="fas fa-external-link-alt"></i></a><br><strong>这个包的编译依赖ddynamic_reconfigure，所以就安装一下：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install ros-melodic-ddynamic-reconfigure</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<blockquote>
-<p>dynamic_reconfigure可以用来实时修改参数，很适合用于机器人参数可视化在线调试。减少了在调试机器人的时候修改完参数再编译这样低效的操作过程，同时效果和qt GUI差不多。<br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16481211/article/details/84675776" >https://blog.csdn.net/qq_16481211/article/details/84675776<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-</blockquote>
-<p>编译好了之后启动：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch realsense2_camera rs_rgbd.launch</span><br></pre></td></tr></table></figure><br>打开RVIZ可以查看点云信息。</p>
-<h1 id="内参获取"><a href="#内参获取" class="headerlink" title="内参获取"></a>内参获取</h1><p>下面的方式可以查看相机的内参，也可以自己标定一下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rostopic <span class="built_in">echo</span> /camera/color/camera_info </span><br><span class="line">$ rostopic <span class="built_in">echo</span> /camera/aligned_depth_to_color/camera_info</span><br></pre></td></tr></table></figure><br>topic中所有aligned_depth_to_color是指已经将深度信息通过相机到RGBD的外参映射到彩色图像上了</p>
-<h1 id="ORB-SLAM"><a href="#ORB-SLAM" class="headerlink" title="ORB-SLAM"></a>ORB-SLAM</h1><p>源码：<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/raulmur/ORB_SLAM2" >https://github.com/raulmur/ORB_SLAM2<i class="fas fa-external-link-alt"></i></a><br>里面是有个ROS功能包的：ORB-SLAM2/Examples/ROS/ORB-SLAM2<br>要用realsense d435i进行的话，需要改一下topic的订阅：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">message_filters::Subscriber&lt;sensor_msgs::Image&gt; <span class="title">rgb_sub</span><span class="params">(nh, <span class="string">&quot;/camera/color/image_raw&quot;</span>, <span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="function">message_filters::Subscriber&lt;sensor_msgs::Image&gt; <span class="title">depth_sub</span><span class="params">(nh, <span class="string">&quot;/camera/aligned_depth_to_color/image_raw&quot;</span>, <span class="number">1</span>)</span></span>;</span><br></pre></td></tr></table></figure><br>重新编译ORB-SLAM2</p>
-<p>需要安装Pangolin：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">chmod</span> +x build_ros.sh</span><br><span class="line">$ ./build_ros.sh</span><br></pre></td></tr></table></figure>
-<p>连接realsense d435i，启动ROS realsense2_camera：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch realsense2_camera rs_rgbd.launch</span><br></pre></td></tr></table></figure><br>先用TUM1.yaml的参数运行一下试试看：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rosrun ORB_SLAM2 RGBD Vocabulary/ORBvoc.txt Examples/RGB-D/TUM1.yaml</span><br></pre></td></tr></table></figure><br>修改yaml文件中的部分参数再试试看！<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rosrun ORB_SLAM2 RGBD Vocabulary/ORBvoc.txt Examples/RGB-D/realsense_d435i.yaml </span><br></pre></td></tr></table></figure></p>
-<h1 id="RTAB"><a href="#RTAB" class="headerlink" title="RTAB"></a>RTAB</h1><p>参考链接：<br><a class="link"   target="_blank" rel="noopener" href="http://wiki.ros.org/rtabmap_ros" >http://wiki.ros.org/rtabmap_ros<i class="fas fa-external-link-alt"></i></a><br>安装move_base, rtabmap<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install ros-melodic-move-base</span><br><span class="line">$ <span class="built_in">sudo</span> apt install ros-melodic-rtabmap</span><br><span class="line">$ <span class="built_in">sudo</span> apt install ros-melodic-imu-filter-madgwick</span><br></pre></td></tr></table></figure><br>编译rtabmap_ros包<br>先启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch realsense2_camera rs_camera.launch align_depth:=<span class="literal">true</span> unite_imu_method:=<span class="string">&quot;linear_interpolation&quot;</span></span><br><span class="line">$ rosrun imu_filter_madgwick imu_filter_node _use_mag:=<span class="literal">false</span> _publish_tf:=<span class="literal">false</span> _world_frame:=<span class="string">&quot;enu&quot;</span> /imu/data_raw:=/camera/imu /imu/data:=/rtabmap/imu</span><br></pre></td></tr></table></figure></p>
-<p>再打开地图<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch rtabmap_ros rtabmap.launch rtabmap_args:=<span class="string">&quot;--delete_db_on_start --Optimizer/GravitySigma 0.3&quot;</span> depth_topic:=/camera/aligned_depth_to_color/image_raw rgb_topic:=/camera/color/image_raw camera_info_topic:=/camera/color/camera_info approx_sync:=<span class="literal">false</span> wait_imu_to_init:=<span class="literal">true</span> imu_topic:=/rtabmap/imu</span><br></pre></td></tr></table></figure></p>
-<p>重置一下服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rosservice call /rtabmap/reset</span><br></pre></td></tr></table></figure><br>然后就可以看见图像了。<br>地图保存的位置在<br>~/.ros/rtabmap.db<br>查看保存的地图可以用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rtabmap-databaseViewer ~/.ros/rtabmap.db</span><br></pre></td></tr></table></figure><br>这个命令。</p>
-<h1 id="XtionPRO-Live"><a href="#XtionPRO-Live" class="headerlink" title="XtionPRO Live"></a>XtionPRO Live</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch openni2_launch openni2.launch depth_registration:=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch rtabmap_ros rtabmap.launch rtabmap_args:=<span class="string">&quot;--delete_db_on_start&quot;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rosservice call /rtabmap/reset</span><br></pre></td></tr></table></figure>
-
+                        <div class="post-encrypt-box border-box"
+                             data-secret="9d152b575a36077c17bf6c124e9333a07339d880491577e58ff24aa23bbabb2c"
+                             data-iv="2cf3055edc2984e0eec3dafb9b434228"
+                             data-ep="d307cd8dcd9749855d6420bea9ad3626"
+                             data-content="3134405a698bc8b23eea28c12e758f86a33363e7a79031056fe36db996989bf614893faed293a0536e25563c59eb99c56fd327492ac484707f8710879cc1b5de13a1edc6ca1bde2c7432097a123b1d9ea03497ccaed09e443338e737e01a1b3b091077ed765afa5fc57d7785d222312a4ac03a14d06c3aaf7da7642ee45adee3"
+                        >
+                            <input type="password" class="password-input border-box" placeholder="请输入密码...">
+                        </div>
+                        <div class="post"></div>
                     
                 </div>
 
@@ -339,11 +321,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Use-Realsense
+                使用 Systemback 制作ROS系统镜像
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2020/02/25/use-realsense/
+                2020/01/15/ubuntu18systemback/
             </div>
         </div>
 
@@ -359,7 +341,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2020-02-25 14:34</div>
+                <div class="content">2020-01-15 10:15</div>
             </div>
 
 
@@ -395,15 +377,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Ubuntu/">Ubuntu</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/systemback/">systemback</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ROS/">ROS</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/realsense/">realsense</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SLAM/">SLAM</a>
                                     </li>
                                 
                             </ul>
@@ -435,14 +417,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2020/02/26/Method-for-importing-matlab-graphics-to-latex/"
-                                   title="Method-for-Importing-Matlab-Graphics-to-Latex"
+                                   href="/2020/02/24/Install-TensorFlow-2-0-in-Colab/"
+                                   title="Install TensorFlow 2.0 in Colab"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Method-for-Importing-Matlab-Graphics-to-Latex</span>
+                                        <span class="post-nav-title-item text-ellipsis">Install TensorFlow 2.0 in Colab</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -452,11 +434,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2020/02/24/Install-TensorFlow-2-0-in-Colab/"
-                                   title="Install TensorFlow 2.0 in Colab"
+                                   href="/2019/10/31/linux-dd-copy-system/"
+                                   title="在Linux环境下使用dd命令复制迁移双系统记录"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Install TensorFlow 2.0 in Colab</span>
+                                        <span class="post-nav-title-item text-ellipsis">在Linux环境下使用dd命令复制迁移双系统记录</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -566,7 +548,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E6%8C%87%E5%AF%BC%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">安装卸载指导：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROS%E7%9A%84%E5%8A%9F%E8%83%BD%E5%8C%85%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">ROS的功能包：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%8F%82%E8%8E%B7%E5%8F%96"><span class="nav-number">3.</span> <span class="nav-text">内参获取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ORB-SLAM"><span class="nav-number">4.</span> <span class="nav-text">ORB-SLAM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RTAB"><span class="nav-number">5.</span> <span class="nav-text">RTAB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XtionPRO-Live"><span class="nav-number">6.</span> <span class="nav-text">XtionPRO Live</span></a></li></ol>
+        
     </div>
 </div>
 
@@ -628,6 +610,13 @@
             <div class="post-tools-container border-box">
     <ul class="post-tools-list border-box">
         <!-- PC encrypt again -->
+        
+            <li class="status-item flex-center post-lock border-box"
+                data-tooltip-content="重新加密"
+            >
+                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-lock-open"></i>
+            </li>
         
 
         <!-- PC TOC show toggle -->
@@ -753,7 +742,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E6%8C%87%E5%AF%BC%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">安装卸载指导：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROS%E7%9A%84%E5%8A%9F%E8%83%BD%E5%8C%85%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">ROS的功能包：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%8F%82%E8%8E%B7%E5%8F%96"><span class="nav-number">3.</span> <span class="nav-text">内参获取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ORB-SLAM"><span class="nav-number">4.</span> <span class="nav-text">ORB-SLAM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RTAB"><span class="nav-number">5.</span> <span class="nav-text">RTAB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XtionPRO-Live"><span class="nav-number">6.</span> <span class="nav-text">XtionPRO Live</span></a></li></ol>
+        
     </div>
 </div>
 

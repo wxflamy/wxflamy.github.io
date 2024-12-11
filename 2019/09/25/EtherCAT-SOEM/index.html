@@ -34,8 +34,8 @@
     
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
-    KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"/images/avatar2.svg","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags|| tags","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"hello word!","category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"https://wxflamy.github.io/images/avatar.png","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags|| tags","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain, and more is in vain when less will serve.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"hello word!","category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -68,7 +68,7 @@
         <div class="left flex-start border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/avatar2.svg">
+                    <img src="https://wxflamy.github.io/images/avatar.png">
                 </a>
             
             <a class="site-name border-box" href="/">
@@ -123,9 +123,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +279,14 @@
 
         
         
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+            </span>
         
         
             <span class="meta-info-item post-pv">
@@ -299,14 +313,12 @@
 <p>然后我就查，首先收费的肯定排除了。那倍福相关的东西就被我屏蔽掉了。然后眼前就浮现出了IGH和SOEM。因为我发现某产品用的IGH，所以我IGH折腾了挺长时间（当然是业余折腾，不影响工作和陪儿子玩），在Linux系统中编译，居然有教程里说补实时补丁，我Linux系统里还有好多别的东西呢，我这个就是试试啊，万一整崩溃了，可亏了，不打补丁，然后稀里糊涂的编过了，也一直没拿从站试，试也没想好怎么试，感觉太难了。然后就过了好久。</p>
 <p>最近用了一个EtherCAT的驱动器，编码器总有问题，总要清错，是在不爱拆开插USB清错了，连上一根网线，几条命令就搞定的话该有多好，于是今天又想到了还有一个选项，可以在Windows环境下用SOEM。</p>
 <p>其实我连SOEM全称还说不对呢。</p>
-<h1 id="正式开始准备"><a href="#正式开始准备" class="headerlink" title="正式开始准备"></a>正式开始准备</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>首先在百度上正经的搜了一下SOEM，第一个弹出来的应该就是官方网站了。据我的经验靠谱的资料还是靠官方，官方搞不懂搜CSDN，资料太少再谷歌，毕竟翻墙一次不容易，要点好几下。</p>
-<img   src="/2019/09/25/EtherCAT-SOEM/baidu_soem_20190925132558.png"  class="" title="百度搜索SOEM结果">
-<p>打开果断再点一下主站相关内容<a class="link"   target="_blank" rel="noopener" href="http://openethercatsociety.github.io/doc/soem/index.html" >SOEM (Simle Open EtherCAT Master)<i class="fas fa-external-link-alt"></i></a>，在这里我注意到了SOEM的全称。</p>
+<h1 id="正式开始准备"><a href="#正式开始准备" class="headerlink" title="正式开始准备"></a>正式开始准备</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>首先在百度上正经的搜了一下SOEM，第一个弹出来的应该就是官方网站了。据我的经验靠谱的资料还是靠官方，官方搞不懂搜CSDN，资料太少再谷歌，毕竟翻墙一次不容易，要点好几下。<br><img   src="/2019/09/25/EtherCAT-SOEM/baidu_soem_20190925132558.png"  class="" title="百度搜索SOEM结果"><br>打开果断再点一下主站相关内容<a class="link"   target="_blank" rel="noopener" href="http://openethercatsociety.github.io/doc/soem/index.html" >SOEM (Simle Open EtherCAT Master)<i class="fas fa-external-link-alt"></i></a>，在这里我注意到了SOEM的全称。</p>
 <p>这个页面告诉我们，SOEM是用c语言写的EtherCAT主站库，它的目的是学而用，所有人都可以通过研究源码来理解EtherCAT主站是如何与从站进行交互的。在Windows系统中使用SOEM需要具备以下条件。</p>
 <ul>
 <li>Windows2000 - Windows 7 (8 not tested, might work).</li>
 <li>VC compiler (others might work, just not tested).</li>
-<li>One (or two if in redundant mode) 100Mb&#x2F;s NIC that can connect to a RAW socket.</li>
+<li>One (or two if in redundant mode) 100Mb/s NIC that can connect to a RAW socket.</li>
 <li>WinPcap installed.</li>
 </ul>
 <p>第一项我就不符合，我Win10啊，咋整，重装系统？不行。再往下看吧。VC编译器，这个可以，现成的。第三个不知道是啥玩意儿，好像是网卡，是不是能插网线就可以，不知道，继续吧。WinPcap这个肯定是个软件，我一搜，<a class="link"   target="_blank" rel="noopener" href="https://www.winpcap.org/" >找到了<i class="fas fa-external-link-alt"></i></a>。这种东西一定要去官网下，找到合适自己的版本。不然你就等着折腾吧。按照某些所谓的教程，一步接着一步来，都不知道自己在干啥。</p>
@@ -331,18 +343,12 @@
 </blockquote>
 <p>哇，<strong>基本示例</strong>，好激动。</p>
 <blockquote>
-<p>下面的示例展示了如何添加由启动代码调用的主函数。在这个例子中，main的唯一目的是生成一个执行SOEM的新任务。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">   rprintp(<span class="string">&quot;SOEM (Simple Open EtherCAT Master)\nSimple test\n&quot;</span>);</span><br><span class="line">   task_spawn (<span class="string">&quot;simpletest&quot;</span>, simpletest, <span class="number">9</span>, <span class="number">8192</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
-<p>这是个什么玩意儿？这也叫例子？<strong>rprintp</strong>是啥啊？<strong>task_spawn</strong>任务启动？难道这是伪代码？**”simpletest”*<em>，这个我好像看到过哦？继续看吧……懵……<br>下面讲SOEM配置了，Configuration嘛。<br>在应用程序启动之后，我们需要设置NIC作为EtherCAT以太网接口。在一个简单的设置中，我们调用</em>ec_init(ifname)<em>，如果SOEM支持电缆冗余，我们调用</em>ec_init_redundant<em>，它将打开第二个端口作为备份。如果您在nicdrv.c中选择了一个专用NIC，则可以将</em>ifname<em>赋值为</em>NULL*进行发送。如果成功，它将返回&gt;0的值。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* initialise SOEM, bind socket to ifname */</span></span><br><span class="line"><span class="keyword">if</span> (ec_init(ifname) &gt; <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p>ヾ(≧O≦)〃嗷~，这一段，信息量太大。<strong>NIC</strong>是啥？查了一下，network interface controller，网络接口控制器，又叫网络适配器，也就是网卡。要设置网卡，咋设置？用*ec_init(ifname)*设置，那这个<strong>ifname</strong>就顺理成章的是网卡咯？这玩意儿的值咋给啊？</p>
+<p>下面的示例展示了如何添加由启动代码调用的主函数。在这个例子中，main的唯一目的是生成一个执行SOEM的新任务。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">   rprintp(<span class="string">&quot;SOEM (Simple Open EtherCAT Master)\nSimple test\n&quot;</span>);</span><br><span class="line">   task_spawn (<span class="string">&quot;simpletest&quot;</span>, simpletest, <span class="number">9</span>, <span class="number">8192</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure><br>这是个什么玩意儿？这也叫例子？<strong>rprintp</strong>是啥啊？<strong>task_spawn</strong>任务启动？难道这是伪代码？<strong>“simpletest”</strong>，这个我好像看到过哦？继续看吧……懵……<br>下面讲SOEM配置了，Configuration嘛。<br>在应用程序启动之后，我们需要设置NIC作为EtherCAT以太网接口。在一个简单的设置中，我们调用<em>ec_init(ifname)</em>，如果SOEM支持电缆冗余，我们调用<em>ec_init_redundant</em>，它将打开第二个端口作为备份。如果您在nicdrv.c中选择了一个专用NIC，则可以将<em>ifname</em>赋值为<em>NULL</em>进行发送。如果成功，它将返回&gt;0的值。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* initialise SOEM, bind socket to ifname */</span></span><br><span class="line"><span class="keyword">if</span> (ec_init(ifname) &gt; <span class="number">0</span>)</span><br></pre></td></tr></table></figure><br>ヾ(≧O≦)〃嗷~，这一段，信息量太大。<strong>NIC</strong>是啥？查了一下，network interface controller，网络接口控制器，又叫网络适配器，也就是网卡。要设置网卡，咋设置？用<em>ec_init(ifname)</em>设置，那这个<strong>ifname</strong>就顺理成章的是网卡咯？这玩意儿的值咋给啊？</p>
 </blockquote>
 <p>你们猜文档后面会说不，我猜不会，所以我查别的去了。</p>
 <p>在CSDN上查到了两篇博客</p>
 <img   src="/2019/09/25/EtherCAT-SOEM/blog1_20190925143615.png"  class="" title="编译SOEM-windows篇">
-
 <img   src="/2019/09/25/EtherCAT-SOEM/blog2_20190925144016.png"  class="" title="EtherCAT-SOEM官方教程">
-
 <p>神人就是多啊。</p>
 <blockquote>
 <p>这个函数主要是初始化SOEM，将网卡和socket绑定起来。其中ifname是个const char*类型的字符串，可以运行slaveinfo.c来获取。比如我的电脑就是：<br>\Device\NPF_{9A10D941-1301-4A51-A856-024B1399EA32}</p>
@@ -350,16 +356,12 @@
 <p>不过我发现他俩文字中电脑的NIC一样的，但是第一个图片里的好像不是，不过无所谓了，反正能搞到NIC了。</p>
 <p>打开我们刚才编译的那个工程文件，把slaveinfo设为默认启动程序，像这样</p>
 <img   src="/2019/09/25/EtherCAT-SOEM/slaveinfo_20190925144739.png"  class="" title="默认启动slaveinfo">
-
-<p>然后就启动啊，看到了啥没？眼睛要是快的话是能看到的，不过我估计大部分人看不到。我在*return(0)<em>的前面加了一条</em>getchar()*，然后我这慢眼神终于看清了。这个过程写起来简单，对于那么快就懵的我，还是历经波折的。</p>
+<p>然后就启动啊，看到了啥没？眼睛要是快的话是能看到的，不过我估计大部分人看不到。我在<em>return(0)</em>的前面加了一条<em>getchar()</em>，然后我这慢眼神终于看清了。这个过程写起来简单，对于那么快就懵的我，还是历经波折的。</p>
 <img   src="/2019/09/25/EtherCAT-SOEM/slaveinfo_20190925145328.png"  class="" title="NIC信息">
-
 <p>找到了就快启动simpletest测试一下吧，好激动啊。<br>网口连上EtherCAT从站，</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">simple_test</span>.exe \Device\NPF_&#123;<span class="number">727</span>D913F-<span class="number">23</span>BC-<span class="number">421</span>F-A071-<span class="number">7</span>F597A7026B4&#125;</span><br></pre></td></tr></table></figure>
-
 <p>结果来啦，成功找到了从站。</p>
 <img   src="/2019/09/25/EtherCAT-SOEM/slaves_found_20190925114741.png"  class="" title="从站找到啦">
-
 <p>我觉得到了这一步，我说的话它就能听见了，它说的我也能看见了。懂不懂另说。</p>
 <p>先来看看它说了啥。</p>
 <ul>
@@ -632,9 +634,11 @@
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Dawn Hill</a>
         
     </div>
+
     <div class="theme-info info-item">
         由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
     </div>
+
     
 
     
@@ -758,6 +762,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -797,8 +830,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">

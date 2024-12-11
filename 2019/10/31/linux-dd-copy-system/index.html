@@ -34,8 +34,8 @@
     
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
-    KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"/images/avatar2.svg","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags|| tags","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"hello word!","category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.hexo_config = {"hostname":"wxflamy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","avatar":"/images/avatar2.svg","logo":"https://wxflamy.github.io/images/avatar.png","favicon":"https://wxflamy.github.io/images/avatar.png"},"menu":{"home":"/","archives":"/archives","tags":"/tags|| tags","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Nature does nothing in vain, and more is in vain when less will serve.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wxflamy","email":"mailto:wxflamy@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"hello word!","category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":true,"img_link":"/images/20180117213756040.jpg","text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"AycsYtG80OKA91VxQpmbT5vF-gzGzoHsz","appkey":"d4PiRnGvC6uCNyAxuNGYINMb","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2019,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -68,7 +68,7 @@
         <div class="left flex-start border-box">
             
                 <a class="logo-image border-box" href="/">
-                    <img src="/images/avatar2.svg">
+                    <img src="https://wxflamy.github.io/images/avatar.png">
                 </a>
             
             <a class="site-name border-box" href="/">
@@ -123,9 +123,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -273,6 +279,14 @@
 
         
         
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>898 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
+            </span>
         
         
             <span class="meta-info-item post-pv">
@@ -299,30 +313,22 @@
 <h2 id="开始备份"><a href="#开始备份" class="headerlink" title="开始备份"></a>开始备份</h2><p>想尽各种办法，让电脑从优盘启动，进入try Ubuntu without install</p>
 <p>进入系统后打开终端，获得一个root权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> -i</span></span><br></pre></td></tr></table></figure>
-
 <p>然后查看一下要备份的硬盘的结构</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>fdisk -u -l</span><br></pre></td></tr></table></figure>
-
 <p>会出现一个表，sda下面有sda1——sda7的各个分区，从start到end，以512kb为单位进行了编排。</p>
 <p>看到这个表我们就可以用dd命令备份硬盘了，它是把硬盘里所有东西都给备份出来。当然我试过了，也可以按分区备份，比如单独备份sda7，也应该是可以的，但是我这是双系统，引导区什么的我又不懂，索性就都备份了吧。</p>
-<p>下面的命令，bs大概是一次备份的单位，count是按此单位备份的数量（是上面end的最大数+1，看数据能够理解），正常后面是要直接接of目标img文件的，可我这太大了，所以就用gzip压缩，指定了压缩目录。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="attribute">bs</span>=512 <span class="attribute">count</span>=899022848 <span class="attribute">if</span>=/dev/sda8 | gzip -6 &gt; /media/ubuntu/硬盘/ghost.img.gz</span><br></pre></td></tr></table></figure>
-
+<p>下面的命令，bs大概是一次备份的单位，count是按此单位备份的数量（是上面end的最大数+1，看数据能够理解），正常后面是要直接接of目标img文件的，可我这太大了，所以就用gzip压缩，指定了压缩目录。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ dd <span class="attribute">bs</span>=512 <span class="attribute">count</span>=899022848 <span class="attribute">if</span>=/dev/sda8 | gzip -6 &gt; /media/ubuntu/硬盘/ghost.img.gz</span><br></pre></td></tr></table></figure></p>
 <p>备份过程很慢，大概8000多秒，想查看进度的话，在新的终端窗口驱动root权限后，输入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">watch -n 5 killall -USR1 <span class="built_in">dd</span></span></span><br></pre></td></tr></table></figure>
 <p>可以每5秒打印一次进度，5秒是可以调整的。</p>
 <h1 id="系统还原"><a href="#系统还原" class="headerlink" title="系统还原"></a>系统还原</h1><p>还是在这个优盘的系统try Ubuntu without install里，当然，换了个电脑。打开终端，获取root权限，输入下面命令开始还原，还原度速度很慢，很慢……</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gzip -dc /media/ubuntu/硬盘/ghost.img.gz | <span class="built_in">dd</span> of=/dev/sda</span></span><br></pre></td></tr></table></figure>
 <p>完事之后重启，自己就进了Windows10系统，没有Ubuntu啥事，这可不行啊。</p>
-<h1 id="修改引导"><a href="#修改引导" class="headerlink" title="修改引导"></a>修改引导</h1><p>再次进入了优盘的try Ubuntu without install里，改一下超级用户的密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> passwd</span></span><br></pre></td></tr></table></figure>
-<p>我不知道用sudo -i可不可以，当时挺着急的了，这只是我试了好几个办法中的一个，不敢乱来，以后可以试试。</p>
-<p>安装一个修复软件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> apt-get install software-properties-common</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> add-apt-repository ppa:yannubuntu/boot-repair</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> apt-get update</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> apt-get install boot-repair</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> boot-repair</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="修改引导"><a href="#修改引导" class="headerlink" title="修改引导"></a>修改引导</h1><p>再次进入了优盘的try Ubuntu without install里，改一下超级用户的密码<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> passwd</span></span><br></pre></td></tr></table></figure><br>我不知道用sudo -i可不可以，当时挺着急的了，这只是我试了好几个办法中的一个，不敢乱来，以后可以试试。</p>
+<p>安装一个修复软件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> apt-get install software-properties-common</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> add-apt-repository ppa:yannubuntu/boot-repair</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> apt-get update</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> apt-get install boot-repair</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> boot-repair</span></span><br></pre></td></tr></table></figure></p>
 <p>在弹出的界面中按本能操作，只到出现成功successfully的消息，可以重启了。</p>
 <p>重启之后我们的目的基本达到了，然后界面里出现了一大堆的启动项，这不太好啊。</p>
-<h1 id="再补充一点"><a href="#再补充一点" class="headerlink" title="再补充一点"></a>再补充一点</h1><p>我们把这些没必要的启动项给删了，先取得root权限，然后到&#x2F;boot&#x2F;grub目录下找grub.cfg文件，里面相关的删一删，再重启，看看效果。</p>
+<h1 id="再补充一点"><a href="#再补充一点" class="headerlink" title="再补充一点"></a>再补充一点</h1><p>我们把这些没必要的启动项给删了，先取得root权限，然后到/boot/grub目录下找grub.cfg文件，里面相关的删一删，再重启，看看效果。</p>
 
                     
                 </div>
@@ -429,14 +435,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2020/02/24/Install-TensorFlow-2-0-in-Colab/"
-                                   title="Install TensorFlow 2.0 in Colab"
+                                   href="/2020/01/15/ubuntu18systemback/"
+                                   title="使用 Systemback 制作ROS系统镜像"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Install TensorFlow 2.0 in Colab</span>
+                                        <span class="post-nav-title-item text-ellipsis">使用 Systemback 制作ROS系统镜像</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -583,9 +589,11 @@
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Dawn Hill</a>
         
     </div>
+
     <div class="theme-info info-item">
         由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
     </div>
+
     
 
     
@@ -709,6 +717,35 @@
 
     <!-- local search -->
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
     <!-- tablet toc -->
     
@@ -748,8 +785,16 @@
 
 <!-- local search -->
 
+    
+<script src="/js/local-search.js"></script>
+
+
 
 <!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
 
 
 <div class="">
