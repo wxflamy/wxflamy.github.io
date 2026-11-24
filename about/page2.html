@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌入页面2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+        }
+
+        .card {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: #4A90E2;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-left: 4px solid #4A90E2;
+            border-radius: 5px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 15px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4A90E2;
+        }
+
+        .stat-label {
+            color: #666;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #50C878;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #3EB489;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>高级iframe特性展示</h1>
+            <p>探索更多嵌入可能性</p>
+        </div>
+
+        <div class="card-body">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">兼容性</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">性能提升</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">安全性</div>
+                </div>
+            </div>
+
+            <ul class="feature-list">
+                <li>🔒 安全沙箱隔离保护</li>
+                <li>⚡ 异步内容加载优化</li>
+                <li>📱 响应式尺寸适配</li>
+                <li>🎨 自定义样式控制</li>
+                <li>🔄 动态内容切换</li>
+                <li>📊 数据通信接口</li>
+            </ul>
+
+            <button onclick="showAlert()">点击查看交互效果</button>
+        </div>
+    </div>
+
+    <script>
+        function showAlert() {
+            alert("恭喜！iframe内的JavaScript执行正常");
+        }
+    </script>
+</body>
+
+</html>

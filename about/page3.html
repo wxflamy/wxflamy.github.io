@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌入页面3</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: #34495e;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .positive {
+            color: #2ecc71;
+        }
+
+        .negative {
+            color: #e74c3c;
+        }
+
+        .chart-container {
+            background: #34495e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #455a64;
+        }
+
+        th {
+            background: #3d566e;
+        }
+
+        tr:hover {
+            background: #3d566e;
+        }
+
+        .status-active {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .status-inactive {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>数据分析仪表板</h1>
+            <p>实时监控关键指标</p>
+        </div>
+
+        <div class="metrics">
+            <div class="metric-card">
+                <div>总访问量</div>
+                <div class="metric-value positive">24,531</div>
+                <div>+12% 同比增长</div>
+            </div>
+            <div class="metric-card">
+                <div>转化率</div>
+                <div class="metric-value positive">4.8%</div>
+                <div>+0.5% 环比增长</div>
+            </div>
+            <div class="metric-card">
+                <div>跳出率</div>
+                <div class="metric-value negative">32.4%</div>
+                <div>-2.1% 环比下降</div>
+            </div>
+            <div class="metric-card">
+                <div>平均停留时间</div>
+                <div class="metric-value positive">3m 42s</div>
+                <div>+15s 同比增长</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>流量趋势图表</h2>
+            <p>此处可以嵌入Chart.js或其他图表库来显示详细的数据可视化内容</p>
+            <div
+                style="height: 200px; background: #3d566e; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                [图表占位符]
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>页面名称</th>
+                    <th>访问次数</th>
+                    <th>平均停留时间</th>
+                    <th>跳出率</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>首页</td>
+                    <td>8,421</td>
+                    <td>2m 15s</td>
+                    <td>28.3%</td>
+                    <td class="status-active">活跃</td>
+                </tr>
+                <tr>
+                    <td>产品页</td>
+                    <td>5,321</td>
+                    <td>4m 30s</td>
+                    <td>15.7%</td>
+                    <td class="status-active">活跃</td>
+                </tr>
+                <tr>
+                    <td>关于我们</td>
+                    <td>2,156</td>
+                    <td>1m 45s</td>
+                    <td>42.1%</td>
+                    <td class="status-inactive">待优化</td>
+                </tr>
+                <tr>
+                    <td>联系我们</td>
+                    <td>1,876</td>
+                    <td>3m 12s</td>
+                    <td>22.5%</td>
+                    <td class="status-active">活跃</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
